@@ -18,7 +18,6 @@ body {
     line-height: 1.5; /* Improves readability */
 }
 
-
 /* Center the content and limit the width */
 .container {
     max-width: 600px; /* Ensures the content doesn't stretch too wide */

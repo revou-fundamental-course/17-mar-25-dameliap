@@ -4,7 +4,7 @@ function calculateSquare() {
 
     // Input validation
     if (isNaN(side) || side <= 0) {
-        document.getElementById('squareResult').innerHTML = "<span class='text-danger'>Please enter a valid number greater than 0.</span>";
+        document.getElementById('squareResult').innerHTML = "<span class='text-danger'>Mohon masukkan angka lebih dari 0.</span>";
         return;
     }
 
@@ -28,7 +28,7 @@ function calculateRectangle() {
 
     // Input validation
     if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
-        document.getElementById('rectangleResult').innerHTML = "<span class='text-danger'>Please enter valid numbers greater than 0.</span>";
+        document.getElementById('rectangleResult').innerHTML = "<span class='text-danger'>Mohon masukkan angka lebih dari 0.</span>";
         return;
     }
 
@@ -41,6 +41,32 @@ function calculateRectangle() {
          Luas = ${length} × ${width} = ${area} cm²<br>
          Keliling = 2 × (${length} + ${width}) = ${perimeter} cm`;
 
+    // Show result with animation
+    resultDiv.classList.add("show");
+}
+
+// Function to calculate area and perimeter of a parallelogram
+function calculateParallelogram() {
+  let base = parseFloat(document.getElementById('parBase').value);
+  let side = parseFloat(document.getElementById('parSide').value);
+  let height = parseFloat(document.getElementById('parHeight').value);
+  
+  // Input validation
+  if (isNaN(base) || isNaN(side) || isNaN(height) || base <= 0 || side <= 0 || height <= 0) {
+    document.getElementById('parallelogramResult').innerHTML = "<span class='text-danger'>Mohon masukkan angka lebih besar dari 0</span>";
+    return;
+  }
+  
+  let area = base * height;
+  let perimeter = 2 * (base + side);
+  
+  let resultDiv = document.getElementById('parallelogramResult');
+  resultDiv.innerHTML = 
+    `<strong>Calculation:</strong><br>
+    Luas = ${base} * ${height} = ${area} cm²
+       <br>
+    Keliling = 2 * (${base} + ${side}) = ${perimeter} cm`;
+    
     // Show result with animation
     resultDiv.classList.add("show");
 }
@@ -58,4 +84,11 @@ function resetRectangle() {
     document.getElementById('rectWidth').value = "";
     document.getElementById('rectangleResult').innerHTML = "";
     document.getElementById('rectangleResult').classList.remove("show");
+}
+
+// Function to reset the parallelogram calculator
+function resetParallelogram() {
+    document.getElementById('parBase').value = "";
+    document.getElementById('parSide').value = "";
+    document.getElementById('parHeight').value = "";
 }
